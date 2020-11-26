@@ -36,6 +36,8 @@ package com.raywenderlich.android.librarian
 
 import android.app.Application
 
+/** App Singleton which will need to start the database and provide it to the rest of the app */
+
 class App : Application() {
 
   companion object {
