@@ -23,4 +23,12 @@ Lab to strength room databse foundamentals in Android Kotlin
  * THE SOFTWARE.
  */
 
+Objectives
 
+* Setup the database
+* Creating Data Access Objects
+* Designing Queries to fetch & store dat
+* Define relationships in tables in room
+* Use Kotlin Coroutines for asen operations
+* Store complex types using TypeAdapters
+* Migrate database tables between versions
