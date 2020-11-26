@@ -35,6 +35,7 @@
 package com.raywenderlich.android.librarian
 
 import android.app.Application
+import com.raywenderlich.android.librarian.database.LibrarianDatabase
 
 /** App Singleton which will need to start the database and provide it to the rest of the app */
 
@@ -42,6 +43,10 @@ class App : Application() {
 
   companion object {
     private lateinit var instance: App
+
+    private val database: LibrarianDatabase by lazy {
+      LibrarianDatabase.buildDatabase(instance)
+    }
   }
 
   override fun onCreate() {
