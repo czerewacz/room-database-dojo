@@ -36,6 +36,9 @@ package com.raywenderlich.android.librarian
 
 import android.app.Application
 import com.raywenderlich.android.librarian.database.LibrarianDatabase
+import com.raywenderlich.android.librarian.model.Genre
+import com.raywenderlich.android.librarian.repository.LibrarianRepository
+import com.raywenderlich.android.librarian.repository.LibrarianRepositoryImp
 
 /** App Singleton which will need to start the database and provide it to the rest of the app */
 
@@ -47,10 +50,41 @@ class App : Application() {
     private val database: LibrarianDatabase by lazy {
       LibrarianDatabase.buildDatabase(instance)
     }
+
+    val repository:LibrarianRepository by lazy {
+      LibrarianRepositoryImp (
+              database.bookDao(),
+              database.genreDao(),
+              database.readingListDao(),
+              database.reviewDao()
+      )
+    }
+
+
   }
 
   override fun onCreate() {
     super.onCreate()
     instance = this
+
+    if ( repository.getGenres().isEmpty()) {
+      repository.addGenres(
+              listOf(
+                      Genre(name = "Action"),
+                      Genre(name = "Adventure"),
+                      Genre(name = "Classic"),
+                      Genre(name = "Mystery"),
+                      Genre(name = "Fantasy"),
+                      Genre(name = "Sci-Fi"),
+                      Genre(name = "History"),
+                      Genre(name = "Romance"),
+                      Genre(name = "Short Story"),
+                      Genre(name = "Biography"),
+                      Genre(name = "Poetry"),
+                      Genre(name = "Self-Help"),
+                      Genre(name = "Youg novel")
+              )
+      )
+    }
   }
 }
