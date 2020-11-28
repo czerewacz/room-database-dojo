@@ -18,9 +18,7 @@ class LibrarianRepositoryImp (
 ) : LibrarianRepository {
     override fun addBook(book: Book) = bookDao.addBook(book)
 
-    override fun getBooks(): List<BookAndGenre> = bookDao.getBooks().map {
-        BookAndGenre(it, genreDao.getGenreById(it.genreId))
-    }
+    override fun getBooks(): List<BookAndGenre> = bookDao.getBooks()
 
     override fun removeBook(book: Book) = bookDao.removeBook(book)
 
