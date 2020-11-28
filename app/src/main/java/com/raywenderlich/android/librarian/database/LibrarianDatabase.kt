@@ -16,7 +16,7 @@ import com.raywenderlich.android.librarian.model.Review
 const val DATABASE_VERSION = 1
 
 @Database (
-    entities = [Book::class,Genre::class],
+    entities = [Book::class,Genre::class,ReadingList::class,Review::class],
     version = DATABASE_VERSION
 )
 

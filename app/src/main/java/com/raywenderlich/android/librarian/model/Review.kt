@@ -41,12 +41,14 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
+@Entity
 data class Review(
+    @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
     val bookId: String,
     val rating: Int,
     val notes: String,
-    val imageUrl: String,
-    val entries: List<ReadingEntry>,
-    val lastUpdatedDate: Date
+    val imageUrl: String
+    //val entries: List<ReadingEntry>,
+    //val lastUpdatedDate: Date
 ) : Parcelable
