@@ -40,4 +40,11 @@ class LibrarianRepositoryImp (
 
                 return books.map { BookAndGenre(it, booksByGenre.genre) }
             }
+
+    override fun getBooksByRating(rating: Int): List<BookAndGenre> {
+        val reviewsByRating = reviewDao.getReviewsByRating(rating)
+
+        return reviewsByRating.map { BookAndGenre(it.book, genreDao.getGenreById(it.book.genreId)) }
+    }
+
 }
